@@ -1,0 +1,24 @@
+#!/bin/bash
+# wrapper to make a knock and then a ssh connection
+
+PORTS="1723:udp 8713:udp 2049:tcp";
+LOGIN="";
+SERVER="";
+
+if [ $# -lt 1 ] || [ $# -gt 2 ] ; then 
+	echo 'usage: kssh user@domain
+            user domain'
+	exit -1
+fi
+
+if [ $# -eq 2 ] ; then
+	LOGIN=$1
+	SERVER=$2
+else
+	LOGIN=${1%\@*}
+	SERVER=${1#*\@}
+fi
+
+#echo "knock -v $SERVER $PORTS && ssh $LOGIN@$SERVER"
+knock -v $SERVER $PORTS && ssh $LOGIN@$SERVER
+exit;
