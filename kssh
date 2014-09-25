@@ -1,7 +1,7 @@
 #!/bin/bash
 # wrapper to make a knock and then a ssh connection
 
-PORTS="1723:udp 8713:udp 2049:tcp";
+PORTS="7777:tcp 8888:tcp 9999:tcp";
 LOGIN="";
 SERVER="";
 
